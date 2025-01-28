@@ -1,1 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .slides-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #ffffff;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        h1, h2, h3 {
+            margin: 0;
+            color: #007bff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+        }
+
+        .highlight {
+            background-color: #e7f3fe;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .footer {
+            font-style: italic;
+            color: #555;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container">
+        <!-- Slide 1 -->
+        <div class="slide">
+            <div>
+                <h1>Assalamu'alaikum Warahmatullahi Wabarakatuh</h1>
+                <p>Dengan memohon Rahmat dan Ridho Allah SWT, kami bermaksud menyelenggarakan Acara Pernikahan Putra-putri kami</p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <div>
+                <h2>dr. Irma Liani</h2>
+                <p>Putri Pertama dari Bapak apt. Birman, S.Farm. & Ibu Yuliani, SKM.</p>
+                <p>Dengan</p>
+                <h2>M. Agsel Leonas, S.Kom</h2>
+                <p>Putra Pertama dari Bapak Ir. Mirlansyah & Ibu Dahliana Zakia, S.E.,M.Si.</p>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+            <div>
+                <h3>AKAD NIKAH</h3>
+                <p class="highlight">Minggu, 12 Januari 2025</p>
+                <p>Pukul: 07.30 WIB s.d. selesai</p>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide">
+            <div>
+                <h3>RESEPSI</h3>
+                <p class="highlight">Minggu, 12 Januari 2025</p>
+                <p>Pukul: 10.00 WIB s.d. selesai</p>
+                <p>GRAND BALLROOM GOLDEN SRIWIJAYA</p>
+                <p>Jl. Gub. H Bastari No. 100, Silaberanti, Jakabaring, Kota Palembang, Sumatera Selatan</p>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide">
+            <div class="footer">
+                <p>Merupakan suatu kehormatan bagi kami jika Bapak/Ibu/Saudara/i dapat hadir dan memberikan doa restu.</p>
+                <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <button class="button" id="prev" disabled>Previous</button>
+        <button class="button" id="next">Next</button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let currentIndex = 0;
+
+        function updateSlides() {
+            const offset = -currentIndex * 100; // Move container to the correct slide
+            slides.forEach(slide => {
+                slide.style.transform = `translateX(${offset}vw)`;
+            });
+
+            // Enable/disable buttons based on the current slide
+            prevButton.disabled = currentIndex === 0;
+            nextButton.disabled = currentIndex === slides.length - 1;
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlides();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < slides.length - 1) {
+                currentIndex++;
+                updateSlides();
+            }
+        });
+
+        updateSlides(); // Initialize slide positions
+    </script>
+</body>
+</html>
 
